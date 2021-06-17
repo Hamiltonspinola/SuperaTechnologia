@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CountryController;
+use App\Http\Controllers\PlanController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,8 +13,12 @@ use Illuminate\Support\Facades\Route;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 */
-Route::get('/home', [CountryController::class, 'index'])->name('home');
-Route::get('/home-inverse', [CountryController::class, 'index_inverse'])->name('home.inverse');
+
+Route::get('admin/plans/{url}', [PlanController::class, 'show'])->name('plans.show');
+Route::post('admin/plans/create', [PlanController::class, 'store'])->name('plans.store');
+Route::get('admin/plans/create', [PlanController::class, 'create'])->name('plans.create');
+Route::get('admin/plans', [PlanController::class, 'index'])->name('plans.index');
+
 Route::get('/', function () {
     return view('welcome');
 });
