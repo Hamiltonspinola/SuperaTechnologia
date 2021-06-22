@@ -34,8 +34,10 @@ class PlanController extends Controller
     }
     public function show($url)
     {
+        //Recuperando o plano pela url
         $plan = $this->repository->where('url', $url)->first();
 
+        //Verificando se o plano foi encontrado, caso não seja, é redirecionado para a página onde estava
         if (!$plan){
             return redirect()->back();
         }
@@ -43,8 +45,10 @@ class PlanController extends Controller
     }
     public function destroy($url)
     {
+        //Recuperando o plano pela url
         $plan = $this->repository->where('url', $url)->first();
 
+        //Verificando se o plano foi encontrado, caso não seja, é redirecionado para a página onde estava
         if (!$plan){
             return redirect()->back();
         }
@@ -58,6 +62,30 @@ class PlanController extends Controller
         $plans = $this->repository->search($request->filter);
         
         return view('admin.pages.plans.index', compact('plans', 'filters'));
+    }
+
+    public function edit($url)
+    {
+        //Recuperando o plano pela url
+        $plans = $this->repository->where('url', $url)->first();
+
+        //Verificando se o plano foi encontrado, caso não seja, é redirecionado para a página onde estava
+        if (!$plans){
+            return redirect()->back();
+        }
+            return view('admin.pages.plans.edit', compact('plans'));
+    }
+
+    public function update(Request $request, $url)
+    {
+        $plans = $this->repository->where('url', $url)->first();
+
+        //Verificando se o plano foi encontrado, caso não seja, é redirecionado para a página onde estava
+        if (!$plans){
+            return redirect()->back();
+        }
+        $plans->update($request->all());
+        return redirect()->route('plans.index');
     }
     
 }

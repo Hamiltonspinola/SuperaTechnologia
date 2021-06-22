@@ -25,7 +25,7 @@
                         <tr>
                             <th>Nome</th>
                             <th>Preço</th>
-                            <th width=50>Ações</th>
+                            <th width=120>Ações</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -33,7 +33,8 @@
                         <tr>
                             <td>{{ $plan->name }}</td>
                             <td>R$ {{ $plan->price }}</td>
-                            <td><a href="{{ route('plans.show', $plan->url) }}" class="btn btn-warning"><i class="fa fa-eye" aria-hidden="true"></i> Ver</a></td>
+                            <td><a href="{{ route('plans.show', $plan->url) }}" class="btn btn-dark"> Ver</a></td>
+                            <td><a href="{{ route('plans.edit', $plan->url) }}" class="btn btn-success"><i class="fa fa-wrench" aria-hidden="true"></i> Editar</a></td>
                         </tr>
                     @endforeach
                     </tbody>
