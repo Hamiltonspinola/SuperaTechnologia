@@ -8,7 +8,7 @@
         <li class="breadcrumb-item"><a href="{{ route('admin.index') }}">Home</a></li>
         <li class="breadcrumb-item"><a href="{{ route('plans.index') }}">Planos</a></li>
     </ol>
-    <h1>Planos <a href="{{ route('plans.create')}}" class="btn btn-dark"><i class="fa fa-address-book" aria-hidden="true"></i> Cadastrar</a></h1>
+    <h1>Planos</h1>
 @stop
 
 @section('content')
@@ -18,6 +18,7 @@
             @csrf
             <input type="text" name="filter" id="name" placeholder="Filtrar..." class="form-controll">
             <button type="submit" class="btn btn-dark"><i class="fa fa-filter" aria-hidden="true"></i> Filtrar</button>
+            <a href="{{ route('plans.create')}}" class="btn btn-dark" style="height: auto; margin:auto 10px;"><i class="fa fa-address-book" aria-hidden="true"></i> Cadastrar</a>
         </form>
             <div class="card-body">
                 <table class="table table-condensed">
@@ -25,7 +26,7 @@
                         <tr>
                             <th>Nome</th>
                             <th>Preço</th>
-                            <th width=120>Ações</th>
+                            <th width=30>Ações</th>
                         </tr>
                     </thead>
                     <tbody>

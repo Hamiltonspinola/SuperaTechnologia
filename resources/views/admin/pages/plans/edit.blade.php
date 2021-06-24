@@ -10,7 +10,7 @@
     <div class="card">
         <div class="card-body">
             <div class="form">
-                <form action="{{ route('plans.update', $plans->url) }}" method="POST">
+                <form action="{{ route('plans.update', $plans->url) }}" method="POST" class="form">
                     @csrf
                     @method('PUT')
 

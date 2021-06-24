@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreUpdatePlan;
 use Illuminate\Support\Str;
 use App\Models\Plan;
 use Illuminate\Http\Request;
@@ -23,7 +24,7 @@ class PlanController extends Controller
     {
         return view('admin.pages.plans.create');
     }
-    public function store(Request $request)
+    public function store(StoreUpdatePlan $request)
     {
         $data = $request->all();
         //Direcionando para a coluna URL o que vem do campo NOME do formulário
