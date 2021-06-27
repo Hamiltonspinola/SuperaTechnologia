@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreUpdatePlan;
-use Illuminate\Support\Str;
 use App\Models\Plan;
 use Illuminate\Http\Request;
 
@@ -26,12 +25,10 @@ class PlanController extends Controller
     }
     public function store(StoreUpdatePlan $request)
     {
-        $data = $request->all();
-        //Direcionando para a coluna URL o que vem do campo NOME do formulário
-        $data['url'] = Str::kebab($request->name);
-        $this->repository->create($data);
+        $this->repository->create($request->all());
+        
 
-        return redirect()->route('plans.index');
+        return redirect()->route('admin.index');
     }
     public function show($url)
     {
@@ -54,7 +51,7 @@ class PlanController extends Controller
             return redirect()->back();
         }
             $plan->delete();
-            return redirect()->route('plans.index');
+            return redirect()->route('admin.index');
     }
 
     public function search(Request $request)
@@ -86,7 +83,7 @@ class PlanController extends Controller
             return redirect()->back();
         }
         $plans->update($request->all());
-        return redirect()->route('plans.index');
+        return redirect()->route('admin.index');
     }
     
 }

@@ -4,7 +4,7 @@
 
 @section('content_header')
     <h1>Detalhes do Plano <strong>{{ $plan->name }}</strong></h1>
-    <td><a href="{{ route('plans.index') }}" class="btn btn-success"><i class="fa fa-home" aria-hidden="true"></i> Home</a></td>
+    <td><a href="{{ route('admin.index') }}" class="btn btn-success"><i class="fa fa-home" aria-hidden="true"></i> Home</a></td>
 @stop
 
 @section('content')

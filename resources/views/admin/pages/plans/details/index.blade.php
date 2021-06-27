@@ -1,13 +1,15 @@
 @extends('adminlte::page')
 
-@section('title', 'Dashboard')
+@section('title', "Detalhes do Plano {$plan->name}")
 
 @section('content_header')
 
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{ route('admin.index') }}">Home</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('plans.show', $plan->url) }}">{{ $plan->name }}</a></li>
+        <li class="breadcrumb-item active"><a href="{{ route('plans.details.index', $plan->url) }}">Detalhes</a></li>
     </ol>
-    <h1>Planos</h1>
+    <h1>Detalhes</h1>
 @stop
 
 @section('content')
@@ -17,25 +19,20 @@
             @csrf
             <input type="text" name="filter" id="name" placeholder="Filtrar..." class="form-controll">
             <button type="submit" class="btn btn-dark"><i class="fa fa-filter" aria-hidden="true"></i> Filtrar</button>
-            <a href="{{ route('plans.create')}}" class="btn btn-dark" style="height: auto; margin:auto 10px;"><i class="fa fa-address-book" aria-hidden="true"></i> Cadastrar</a>
+            <a href="{{ route('plans.details.create', $plan->url)}}" class="btn btn-dark" style="height: auto; margin:auto 10px;"><i class="fa fa-address-book" aria-hidden="true"></i> Cadastrar</a>
         </form>
             <div class="card-body">
                 <table class="table table-condensed">
                     <thead>
                         <tr>
                             <th>Nome</th>
-                            <th>Preço</th>
-                            <th width=100>Ações</th>
+                            <th width=250>Ações</th>
                         </tr>
                     </thead>
                     <tbody>
-                    @foreach($plans as $plan)
+                    @foreach($details as $detail)
                         <tr>
-                            <td>{{ $plan->name }}</td>
-                            <td>R$ {{ $plan->price }}</td>
-                            <td><a href="{{ route('plans.show', $plan->url) }}" class="btn btn-dark"> Ver</a></td>
-                            <td><a href="{{ route('plans.edit', $plan->url) }}" class="btn btn-success"><i class="fa fa-wrench" aria-hidden="true"></i> Editar</a></td>
-                            <td><a href="{{ route('plans.details.index', $plan->url) }}" class="btn btn-primary"> Detalhes </a></td>
+                            <td>{{ $detail->name }}</td>
                         </tr>
                     @endforeach
                     </tbody>
@@ -44,9 +41,9 @@
             <div class="card-footer">
 
             @if(isset($filters))
-                {!! $plans->appends($filters)->links() !!}
+                {!! $details->appends($filters)->links() !!}
             @else
-                {!! $plans->links() !!}
+                {!! $details->links() !!}
             @endif()
             
             

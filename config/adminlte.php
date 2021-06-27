@@ -228,7 +228,7 @@ return [
         
         [
             'text' => 'Planos',
-            'url'  => 'admin/plans',
+            'url'  => 'admin',
         ],
     ],
 
