@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use App\Models\Plan;
+use App\Models\vehicle;
 use App\Observers\PlanObeserver;
 use Illuminate\Support\ServiceProvider;
 
@@ -25,6 +25,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Plan::observe(PlanObeserver::class);
+        vehicle::observe(PlanObeserver::class);
     }
 }

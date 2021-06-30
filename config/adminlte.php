@@ -45,12 +45,12 @@ return [
     |
     */
 
-    'logo' => '<b>Lara</b>Food',
+    'logo' => '<b>Veículos</b>Dicas',
     'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
-    'logo_img_alt' => 'LaraFood',
+    'logo_img_alt' => 'VeículosDicas',
 
     /*
     |--------------------------------------------------------------------------
@@ -227,8 +227,12 @@ return [
     'menu' => [
         
         [
-            'text' => 'Planos',
-            'url'  => 'admin',
+            'text' => 'Veículos',
+            'url'  => '/',
+        ],
+        [
+            'text' => 'Cadastrar Veículo',
+            'url'  => 'admin/vehicles/create',
         ],
     ],
 

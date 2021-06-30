@@ -1,20 +1,20 @@
 @extends('adminlte::page')
 
-@section('title', "Editar Plano { $plans->name }")
+@section('title', "Editar Plano { $vehicles->name }")
 
 @section('content_header')
-    <h1>Editar o Plano <strong>{{ $plans->name }}</strong></h1>
+    <h1>Editar o Plano <strong>{{ $vehicles->name }}</strong></h1>
 @stop
 
 @section('content')
     <div class="card">
         <div class="card-body">
             <div class="form">
-                <form action="{{ route('plans.update', $plans->url) }}" method="POST" class="form">
+                <form action="{{ route('vehicles.update', $vehicles->url) }}" method="POST" class="form">
                     @csrf
                     @method('PUT')
 
-                   @include('admin.pages.plans._partials.form')
+                   @include('admin.pages.vehicles._partials.form')
                 </form>
             </div>
         </div>

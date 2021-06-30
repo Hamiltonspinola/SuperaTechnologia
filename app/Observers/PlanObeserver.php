@@ -3,31 +3,31 @@
 namespace App\Observers;
 
 use Illuminate\Support\Str;
-use App\Models\Plan;
+use App\Models\vehicle;
 
 class PlanObeserver
 {
     /**
-     * Handle the Plan "creating" event.
+     * Handle the vehicle "creating" event.
      *
-     * @param  \App\Models\Plan  $plan
+     * @param  \App\Models\vehicle  $vehicle
      * @return void
      */
-    public function creating(Plan $plan)
+    public function creating(vehicle $vehicle)
     {
-        $plan->url = Str::kebab($plan->name);
+        $vehicle->url = Str::kebab($vehicle->name);
     }
 
     /**
-     * Handle the Plan "updating" event.
+     * Handle the vehicle "updating" event.
      *
-     * @param  \App\Models\Plan  $plan
+     * @param  \App\Models\vehicle  $vehicle
      * @return void
      */
-    public function updating(Plan $plan)
+    public function updating(vehicle $vehicle)
     {
         //Direcionando para a coluna URL o que vem do campo NOME do formulário
-        $plan->url = Str::kebab($plan->name);
+        $vehicle->url = Str::kebab($vehicle->name);
 
     }
 }

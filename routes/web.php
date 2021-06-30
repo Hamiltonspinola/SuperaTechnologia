@@ -3,6 +3,9 @@
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\DetailPlanController;
 use App\Http\Controllers\PlanController;
+use App\Http\Controllers\TipVehicleController;
+use App\Http\Controllers\VehicleController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,30 +19,38 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::prefix('admin')
+        ->middleware('auth')
         ->group(function(){
-            /**
-             * Route Details Plan
-             */
-
-            Route::put('plans/{url}/details/{idDetail}',[DetailPlanController::class, 'update'])->name('plans.details.update');
-            Route::get('plans/{url}/details/{idDetail}/edit',[DetailPlanController::class, 'edit'])->name('plans.details.edit');
-            Route::get('plans/{url}/details/create',[DetailPlanController::class, 'create'])->name('plans.details.create');
-            Route::post('plans/{url}/details/create',[DetailPlanController::class, 'store'])->name('plans.details.store');
-            Route::get('plans/{url}/details',[DetailPlanController::class, 'index'])->name('plans.details.index');
 
             /**
-             * Route Plans
+             * Route tips vehicle
              */
-    Route::get('plans/create', [PlanController::class, 'create'])->name('plans.create');
-    Route::put('plans/{url}', [PlanController::class, 'update'])->name('plans.update');
-    Route::get('plans/{url}/edit', [PlanController::class, 'edit'])->name('plans.edit');
-    Route::any('plans/search', [PlanController::class, 'search'])->name('plans.search');
-    Route::delete('plans/{url}', [PlanController::class, 'destroy'])->name('plans.destroy');
-    Route::get('plans/{url}', [PlanController::class, 'show'])->name('plans.show');
-    Route::post('plans/create', [PlanController::class, 'store'])->name('plans.store');
 
-    /*
-    *Home
-     */
-    Route::get('/', [PlanController::class, 'index'])->name('admin.index');
+            Route::get('vehicles/{url}/tips/create',[TipVehicleController::class, 'create'])->name('vehicles.tips.create');
+            Route::put('vehicles/{url}/tips/{idTip}',[TipVehicleController::class, 'update'])->name('vehicles.tips.update');
+            Route::get('vehicles/{url}/tips/{idTip}/edit',[TipVehicleController::class, 'edit'])->name('vehicles.tips.edit');
+            Route::any('vehicles/{url}/search', [TipVehicleController::class, 'search'])->name('vehicles.tips.search');
+            Route::delete('vehicles/{url/tips/{idTip}', [TipVehicleController::class, 'destroy'])->name('vehicles.tips.destroy');
+            Route::get('vehicles/{url/tips/{idTip}', [TipVehicleController::class, 'show'])->name('vehicles.tips.show');
+            Route::post('vehicles/{url}/tips/create',[TipVehicleController::class, 'store'])->name('vehicles.tips.store');
+            Route::get('vehicles/{url}/tips',[TipVehicleController::class, 'index'])->name('vehicles.tips.index');
+
+            /**
+             * Route vehicles
+             */
+            Route::get('vehicles/create', [VehicleController::class, 'create'])->name('vehicles.create');
+            Route::put('vehicles/{url}', [VehicleController::class, 'update'])->name('vehicles.update');
+            Route::get('vehicles/{url}/edit', [VehicleController::class, 'edit'])->name('vehicles.edit');
+            Route::any('vehicles/search', [VehicleController::class, 'search'])->name('vehicles.search');
+            Route::delete('vehicles/{url}', [VehicleController::class, 'destroy'])->name('vehicles.destroy');
+            Route::get('vehicles/{url}', [VehicleController::class, 'show'])->name('vehicles.show');
+            Route::post('vehicles/create', [VehicleController::class, 'store'])->name('vehicles.store');
 });
+
+/*
+            *Home
+            */
+            Route::get('/', [VehicleController::class, 'index'])->name('admin.index');
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\VehicleController::class, 'index'])->name('home');
