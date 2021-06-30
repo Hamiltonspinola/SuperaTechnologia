@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'LaraFood',
+    'title' => 'VehiclesTips',
     'title_prefix' => '',
     'title_postfix' => '',
 
